@@ -86,7 +86,7 @@ class ReLULayer:
         self.input = None
     def forward(self, x):
         self.input = x
-        return tf.maximum(0, x)
+        return tf.maximum(tf.constant(0.0, dtype=x.dtype), x)
     def backward(self, grad_output):
         return grad_output * tf.cast(self.input > 0, tf.float32)
 
